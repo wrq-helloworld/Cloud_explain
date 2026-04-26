@@ -1,6 +1,7 @@
 # Interpreting and Manipulating Uncertain Facial Semantics in GANs through Gaussian Cloud Distribution
 ## Requirements
 * Python 3
+* torch 1.10.3+cu113
 * Matplotlib 3.2.2
 * Scipy 1.5
 * Numpy 1.18
