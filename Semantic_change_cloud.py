@@ -5,7 +5,6 @@ import csv
 from tqdm import tqdm
 
 
-
 def write_csv(path, data):
     with open(path, "a", newline='') as csvfile:
         writer = csv.writer(csvfile)
@@ -237,23 +236,22 @@ def semantic_change_uncertain_dis(data, label, Ratio, Ex, En, He, Gran_COUNT):
     np.save('./cloud_changed_uncertain_' + str(int(Ratio * 100)) + '.npy', result_all)
 
 
-def main()
-    data = np.load('./latent_var.npy')                 # The data of latent variable
-    label = read_csv('./latent_concat_label_9.csv')    # The lable of latent variable
-    Gran_COUNT = 9                                     # The number of semantics
-    # Parameters of the Gaussian cloud distribution
-    Ex = np.load('./Ex.npy')
-    En = np.load('./En.npy')
-    He = np.load('./He.npy')
+data = np.load('./latent_var.npy')                 # The data of latent variable
+label = read_csv('./latent_concat_label_9.csv')    # The lable of latent variable
+Gran_COUNT = 9                                     # The number of semantics
+# Parameters of the Gaussian cloud distribution
+Ex = np.load('./Ex.npy')
+En = np.load('./En.npy')
+He = np.load('./He.npy')
 
-    # Uncertain Semantic Manipulation USM
-    semantic_change_certain(data, label, Ex, En, He, Gran_COUNT)
-    # Certain Semantic Manipulation CSM
-    semantic_change_uncertain(data, label, Ex, En, He, Gran_COUNT)
+# Uncertain Semantic Manipulation USM
+semantic_change_certain(data, label, Ex, En, He, Gran_COUNT)
+# Certain Semantic Manipulation CSM
+semantic_change_uncertain(data, label, Ex, En, He, Gran_COUNT)
 
-    # The percentage of the dimension involved in manipulation
-    Ratio = 0.95
-    # Disentangled Uncertain Semantic Manipulation DUSM
-    semantic_change_all_certain_dis(data,label,Ratio, Ex, En, He, Gran_COUNT)
-    # Disentangled Certain Semantic Manipulation DCSM
-    semantic_change_all_uncertain_dis(data, label, Ratio, Ex, En, He, Gran_COUNT)
+# The percentage of the dimension involved in manipulation
+Ratio = 0.95
+# Disentangled Uncertain Semantic Manipulation DUSM
+semantic_change_all_certain_dis(data,label,Ratio, Ex, En, He, Gran_COUNT)
+# Disentangled Certain Semantic Manipulation DCSM
+semantic_change_all_uncertain_dis(data, label, Ratio, Ex, En, He, Gran_COUNT)
